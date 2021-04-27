@@ -1,0 +1,42 @@
+CREATE DATABASE "Taxipark"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+
+
+
+CREATE TABLE public."Auto"
+(
+    "AutoId" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Brand" text COLLATE pg_catalog."default",
+    "Model" text COLLATE pg_catalog."default",
+    CONSTRAINT "Auto_pkey" PRIMARY KEY ("AutoId")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Auto"
+    OWNER to postgres;
+
+
+
+
+
+CREATE TABLE public."Driver"
+(
+    "Id" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Name" text COLLATE pg_catalog."default",
+    "AutoId" integer,
+    CONSTRAINT "Driver_pkey" PRIMARY KEY ("Id")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Driver"
+    OWNER to postgres;
